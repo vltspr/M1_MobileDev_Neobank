@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { Context } from "../context/Provider"
 
 type PropsType = {
   navigation: any
+  amout: number
 }
 
 const DetailScreen: React.FC<PropsType> = ({ navigation }) => {
@@ -12,14 +13,11 @@ const DetailScreen: React.FC<PropsType> = ({ navigation }) => {
   const [arrDepense, setArrDepense] = useState<array>([])
   const { state, dispatch } = useContext(Context)
 
-  const onPressText = () => {
-    navigation.navigate("")
-  }
 
-  const addDepense = () => {
+  const addDepense = (amount) => {
     dispatch({
       type: "UPDATE_REVENU",
-      payload: 10,
+      payload: amount,
     })
     setArrDepense([...arrDepense, 10])
   }
@@ -31,11 +29,12 @@ const DetailScreen: React.FC<PropsType> = ({ navigation }) => {
       {arrDepense.map((item, index) => {
         return (
           <View key={index}>
-            <Text>Nouvelle dépense : +10€</Text>
+            <Text>Nouvelle dépense : +10</Text>
           </View>
         )
       })}
-      <Button title="Ajouter une dépense" onPress={addDepense} />
+      <Button title="Ajouter un revenus" onPress={() =>
+        Alert.prompt("Montant", "Veuillez renseigner le montant du revenus", amount => addDepense(parseInt(amount)))} />
     </View>
   )
 }
