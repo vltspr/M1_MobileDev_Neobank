@@ -23,7 +23,7 @@ const HomeScreen: React.FC<PropsType> = ({ navigation }) => {
       
       <View style={styles.navigation}>
           <Button title={"Vers 'Profil'"} onPress={onPressToProfil}/>
-          <Button title={"Vers 'Account'"} onPress={onPressToProfil}/>
+          <Button title={"Vers 'Account'"} onPress={onPressToDetails}/>
       </View>
     </View>
   );
