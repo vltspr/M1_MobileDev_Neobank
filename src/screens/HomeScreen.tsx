@@ -1,13 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 
 type PropsType = {
   navigation: any
   header: any
 }
 
-const HomeScreen: React.FC<PropsType> = ({ navigation}) => {
+const HomeScreen: React.FC<PropsType> = ({ navigation }) => {
 
   const onPressToProfil = () => {
     navigation.navigate("Profil")
@@ -18,15 +17,14 @@ const HomeScreen: React.FC<PropsType> = ({ navigation}) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-        <Text>Bienvenue sur le 'HomeScreen'</Text>
-      <StatusBar style="auto" />
-      <TouchableOpacity onPress={onPressToProfil}>
-        <Text>Vers 'Profil'</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={onPressToDetails}>
-        <Text>Vers 'Account'</Text>
-      </TouchableOpacity>
+      <View>
+      <Text style={styles.homeText}>Bienvenue sur Neobank</Text>
+      </View>
+      
+      <View style={styles.navigation}>
+          <Button title={"Vers 'Profil'"} onPress={onPressToProfil}/>
+          <Button title={"Vers 'Account'"} onPress={onPressToProfil}/>
+      </View>
     </View>
   );
 }
@@ -34,9 +32,21 @@ const HomeScreen: React.FC<PropsType> = ({ navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white'
+  },
+  navigation: {
+    marginHorizontal: 30,
+    marginBottom:20,
+    backgroundColor: "#e5e5e5",
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1
+  },
+  homeText: {
+    height:50,
+    textAlignVertical: "center",
+    textAlign: "center"
   }
 })
 

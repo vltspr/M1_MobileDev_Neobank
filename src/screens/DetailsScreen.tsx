@@ -34,7 +34,9 @@ const DetailScreen: React.FC<PropsType> = ({ navigation }) => {
         )
       })}
       <Button title="Ajouter un revenus" onPress={() =>
-        Alert.prompt("Montant", "Veuillez renseigner le montant du revenus", amount => addDepense(parseInt(amount)))} />
+        Alert.prompt("Montant", "Veuillez renseigner le montant du revenus", amount => addDepense(parseInt(amount)))
+      }
+      />
     </View>
   )
 }
